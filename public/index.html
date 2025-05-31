@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Browser SSH Terminal</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xterm/xterm/css/xterm.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@xterm/xterm/lib/xterm.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@xterm/addon-fit/lib/xterm-addon-fit.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <style>
+    :root {
+      --terminal-bg: #1a1a1a;
+      --terminal-fg: #e0e0e0;
+      --terminal-cursor: #00ff00;
+      --terminal-selection: rgba(255, 255, 255, 0.2);
+      --terminal-border: #333;
+    }
+    
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--terminal-bg);
+      color: var(--terminal-fg);
+      font-family: 'Fira Code', 'Courier New', monospace;
+      overflow: hidden;
+    }
+    
+    #terminal-container {
+      padding: 20px;
+      height: calc(100vh - 40px);
+      box-sizing: border-box;
+    }
+    
+    #terminal {
+      height: 100%;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+      border: 1px solid var(--terminal-border);
+    }
+    
+    .xterm-viewport {
+      scrollbar-width: thin;
+      scrollbar-color: #555 var(--terminal-bg);
+    }
+    
+    .xterm-viewport::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    .xterm-viewport::-webkit-scrollbar-track {
+      background: var(--terminal-bg);
+    }
+    
+    .xterm-viewport::-webkit-scrollbar-thumb {
+      background-color: #555;
+      border-radius: 4px;
+    }
+    
+    .xterm-cursor {
+      background-color: var(--terminal-cursor) !important;
+    }
+    
+    .xterm-selection {
+      background: var(--terminal-selection) !important;
+    }
+  </style>
+</head>
+<body>
+  <div id="terminal-container">
+    <div id="terminal"></div>
+  </div>
+  <script src="terminal.js"></script>
+</body>
+</html>
